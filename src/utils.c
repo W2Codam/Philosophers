@@ -6,7 +6,7 @@
 /*   By: lde-la-h <lde-la-h@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/17 12:27:38 by lde-la-h      #+#    #+#                 */
-/*   Updated: 2021/12/17 12:36:55 by lde-la-h      ########   odam.nl         */
+/*   Updated: 2021/12/17 13:08:36 by lde-la-h      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,18 @@
  * 
  * @param state 
  */
-void	ft_cleanup(t_state *state)
+void	ft_cleanup(t_state **state)
 {
 	int32_t	i;
 
-	i = 0;
-	pthread_mutex_destroy(&state->death_m);
-	pthread_mutex_destroy(&state->print_m);
+	i = -1;
+	while (++i < (*state)->p_count)
+		pthread_join((*state)->philos[i].thread, NULL);
+	ft_sleep((*state)->eating_time * 3);
+	free((*state)->forks);
+	free((*state)->philos);
+	free(*state);
+	*state = NULL;
 }
 
 /**

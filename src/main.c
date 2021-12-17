@@ -6,7 +6,7 @@
 /*   By: lde-la-h <lde-la-h@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 13:00:44 by lde-la-h      #+#    #+#                 */
-/*   Updated: 2021/12/17 12:40:04 by lde-la-h      ########   odam.nl         */
+/*   Updated: 2021/12/17 13:04:06 by lde-la-h      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static bool	ft_new_philo(t_philo *philo, t_state *state, int32_t id)
 	philo->state = state;
 	if (pthread_create(&philo->thread, NULL, &ft_cycle, philo) != 0)
 		return (false);
-	pthread_detach(philo->thread);
+	//pthread_detach(philo->thread);
 	return (true);
 }
 
@@ -155,10 +155,6 @@ int32_t	main(int32_t argc, char **argv)
 	if (pthread_create(&monitor, NULL, &ft_check_status, rules) != 0)
 		return (ft_perror("Error: Failed to make monitor."));
 	pthread_join(monitor, NULL);
-	system("leaks philo");
-	/*
-	for (int32_t i = 0; i < rules->p_count; i++)
-		pthread_join(rules->philos[i].thread, NULL);
-	*/
+	ft_cleanup(&rules);
 	return (EXIT_SUCCESS);
 }

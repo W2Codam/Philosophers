@@ -6,7 +6,7 @@
 /*   By: lde-la-h <lde-la-h@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 13:01:19 by lde-la-h      #+#    #+#                 */
-/*   Updated: 2021/12/17 12:33:55 by lde-la-h      ########   odam.nl         */
+/*   Updated: 2021/12/17 12:56:09 by lde-la-h      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef enum e_status
 
 void	*ft_cycle(void *arg);
 void	*ft_check_status(void *args);
+void	ft_cleanup(t_state **state);
 
 // Utils =//
 
