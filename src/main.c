@@ -76,7 +76,7 @@ static bool	ft_new_philo(t_philo *philo, t_state *state, int32_t id)
  */
 static bool	ft_parse_args(int32_t argc, char **argv, t_state *state)
 {
-	if (ft_atoi64(argv[1], &state->p_count) && \
+	if (ft_atoi64(argv[1], &state->p_count && state->p_count > 0) && \
 		ft_atoi64(argv[2], &state->death_time) && \
 		ft_atoi64(argv[3], &state->eating_time) && \
 		ft_atoi64(argv[4], &state->sleep_time))
